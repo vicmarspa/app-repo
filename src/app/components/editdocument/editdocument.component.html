@@ -1,0 +1,103 @@
+<div class="col-lg-8 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            Subir Documento
+        </div>
+        <div class="card-body">
+            <form (submit)="uploadDocument(documentTitle, documentAuthor, documentDescription, documentRes, documentArea)">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="documento.documentTitle" name="documentTitle" class="form-control" placeholder="Ingrese el Título" #documentTitle required>
+                </div>
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="documento.documentAuthor" name="documentAuthor" class="form-control" placeholder="Autor del Documento" #documentAuthor required>
+                </div>
+                <div class="form-group">
+                    <FONT SIZE="1" >MÁXIMO 500 CARACTERES</FONT>
+                    <textarea rows="2" [(ngModel)]="documento.documentDescription" name="documentDescription" class="form-control" placeholder="Descripción Breve" maxlength="500" required #documentDescription></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea rows="8" [(ngModel)]="documento.documentRes" name="documentRes" class="form-control" placeholder="Resumen del Documento" required #documentRes></textarea>
+                </div>
+
+
+
+
+                
+                <b>Disciplina</b>
+                <br>
+                <select class="form-control"  [(ngModel)]="taskSelected" name="taskSelected"(change)="onSelect2($event.target.value)" #documentArea required >
+                    <option  *ngFor="let task of tasks" [value]="task.name" >
+                       {{task.name}}         
+                    </option>                
+                </select>   
+                <br>
+                <b>Area del Conocimiento</b>
+                <br>
+                <select [(ngModel)]="taskSelected2" name="taskSelected2" class="form-control" (change)="onSelect($event.target.value)" >
+                    <option  *ngFor="let task2 of tasks2" [value]="task2.nameciencia" >
+                       {{task2.nameciencia}}         
+                    </option>                
+                </select>  
+                <br>
+
+
+
+
+
+
+
+                <b>¿Pertenece a alguna universidad?</b>
+                <br>
+                <select class="form-control"  [(ngModel)]="taskSelectedUniversity" (change)="onSelectUniversity($event.target.value)"  >
+                    <option  *ngFor="let taskU of taskUniversity" [value]="taskU.universityName" >
+                       {{taskU.universityName}}         
+                    </option>                
+                </select>   
+                <br>
+
+                <b>¿A cual carrera de esta universidad?</b>
+                <select [(ngModel)]="taskSelectedCarrer" class="form-control" (change)="onSelectCarrer($event.target.value)" >
+                    <option  *ngFor="let taskC of tasksCarrerselection" [value]="taskC.carrerName"  >
+                       {{taskC.carrerName}}         
+                    </option>                
+                </select>  
+                <br>
+
+                <b>¿A cual asignatura de esta carrera?</b>
+
+
+
+
+
+
+
+
+
+                <select [(ngModel)]="taskSelectedAsignatura" class="form-control" (change)="onSelectAsignatura($event.target.value)" >
+                    <option  *ngFor="let taskA of tasksAsignaturaselection" [value]="taskA.asignaturaName"  >
+                       {{taskA.asignaturaName}}         
+                    </option>                
+                </select>  
+                <br>
+                
+                <select class="form-control"  [(ngModel)]="documentTypeSelected" (change)="onSelectSub($event.target.value)">
+                    <option>Documento</option>
+                    <option>Presentación</option>
+                  </select> 
+
+
+
+                <br>
+                  <div>
+                    <br>
+                    <input class="form-control form-control-lg" id="formFileLg" type="file" (change)="onPhotoSelected($event)">
+                  </div>
+                    <br>
+                    <br>
+                <button class="btn btn-primary btn-block">
+                    Subir Documento
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

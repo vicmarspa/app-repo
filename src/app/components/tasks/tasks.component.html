@@ -1,0 +1,139 @@
+<div class="container-fluid col-12 ">
+    <div class="row">
+    <div class="col-8 bg-light" >
+        <div class="col-12" *ngFor="let task of tasks">
+        <br>
+        <!-- <td [ngClass]="{'bg-success text-white' : row.adeudado < 1,  'bg-danger text-white' : row.adeudado > 1, 'bg-warning text-dark': row.adeudado == null}"><h2>${{row.adeudado | number: '1.0-0'}}</h2></td>   -->
+
+        <div class="card border border-white  text-uppercase">
+
+          <!-- <div class="cardhead  text-white p-2" style="background-color:darkmagenta;"> -->
+
+
+
+          <div class="cardhead rounded-top text-white p-2 "  style="opacity: 0.8;" [ngClass]="{'bg-primary' : task.documentType == 'Documento',  'bg-danger' : task.documentType == 'Presentación'}" >
+              <h5> {{task.documentTitle}}</h5>
+          </div>
+
+            <div class="card-body bg-light">
+             
+            <b>DESCRIPCIÓN: &nbsp;</b><FONT SIZE="2" align="justify">{{task.documentDescription}}</FONT>
+            </div>
+            <div class="card-body bg-light">
+                <FONT SIZE="1"><b>FECHA DE PUBLICACIÓN:</b>  {{task.documentDate | date: 'shortDate'}}</FONT>
+                &nbsp;
+                <FONT SIZE="1"><b>AUTOR:</b>  {{task.documentAuthor}}</FONT>
+                <br>
+                <FONT SIZE="1"><b>DISCIPLINA:</b>  {{task.documentSubArea}}</FONT>
+                <br>
+                <FONT SIZE="1"><b>ÁREA DEL CONOCIMIENTO:</b>  {{task.documentArea}}</FONT>
+                <br>
+                <FONT SIZE="1"><b>TIPO:</b>  {{task.documentType}}</FONT>
+                <br>
+                <br>
+            </div>
+                <div class="card-footer rounded-bottom" style="opacity: 0.8;" [ngClass]="{'bg-primary text-white' : task.documentType == 'Documento',  'bg-danger text-white' : task.documentType == 'Presentación'}" >
+                  <div class="d-flex flex-row-reverse">
+                    <button class="btn btn-primary btn-block border border-white" style="opacity: 0.8;"  [ngClass]="{'bg-primary' : task.documentType == 'Documento',  'bg-danger' : task.documentType == 'Presentación'}"        routerLink="/documento/{{task._id}}">
+                      IR AL DOCUMENTO
+                    </button>
+                  </div>
+                </div>
+
+       
+            
+        </div>
+    </div>
+
+</div>
+
+
+
+    <div class="col-4 bg-light">
+      <br>
+      <!-- BUSQUEDA POR ÁREA DEL CONOCIMIENTO -->
+      <div class="card border-dark text-capitalize">
+          <div class="card-header bg-dark text-white text-capitalize" style="opacity: 0.8;">busqueda avanzada</div>
+          <div class="card-body bg-light">
+              <div class="row">
+                  <h6 class="ml-4">disciplina</h6>
+                  <select class="form-control ml-4 "  style="width : 295px;"  [(ngModel)]="taskSelected"  (change)="onSelect2($event.target.value)">
+                    <option  *ngFor="let taskB of tasksBusqueda" [value]="taskB.name" >
+                      {{taskB.name}}       
+                    </option>                
+                </select>   
+              </div>
+              <div class="row">
+                  <h6 class="ml-4 mt-2">tipo de archivo</h6>
+                  <select class="form-control ml-4" style="width : 295px" [(ngModel)]="taskSelectedTipo">
+                    <option>Documento</option>
+                    <option>Presentación</option>
+                  </select> 
+              </div>
+              <div class="row">
+          
+                    <h6 class="ml-4 mt-2">área del conocimiento</h6>                     
+                    <select class="form-control ml-4" style="width : 295px" [(ngModel)]="taskSelectedSub" (change)="onSelectSub($event.target.value)">
+                      <option  *ngFor="let taskSub of tasksBusquedaSub" [value]="taskSub.nameciencia" >
+                        {{taskSub.nameciencia}}         
+                      </option>                
+                    </select> 
+              </div>
+          </div>
+          <div class="card-footer bg-dark" style="opacity: 0.8;">                
+            <button type="button" class="btn btn-success btn-block btn-sm ml-2 mt-2" routerLink="/getadvance/{{taskSelected}}/{{taskSelectedSub}}/{{taskSelectedTipo}}">buscar</button>
+          </div>
+        </div>
+        
+
+
+
+
+            <!-- BUSQUEDA POR INSTITUCIÓN -->
+        <div class="card border-dark mt-2 text-capitalize">
+          <div class="card-header bg-dark text-white text-capitalize" style="opacity: 0.8;">busqueda específica</div>
+          <div class="card-body bg-light">
+            <div class="row">
+              <h6 class="ml-4">insticución académica</h6>
+              <select class="form-control ml-4" style="width : 295px" [(ngModel)]="taskSelectedUniversity" (change)="onSelectUniversity($event.target.value)"  >
+                <option  *ngFor="let taskU of taskUniversity" [value]="taskU.universityName" >
+                  {{taskU.universityName}}         
+                </option>                
+              </select>  
+            </div>
+            <div class="row">
+              <h6 class="ml-4 mt-2">carrera</h6>
+              <select [(ngModel)]="taskSelectedCarrer" style="width : 295px" class="form-control ml-4" (change)="onSelectCarrer($event.target.value)" >
+                <option  *ngFor="let taskC of tasksCarrerselection" [value]="taskC.carrerName"  >
+                  {{taskC.carrerName}}         
+                </option>                
+              </select>  
+            </div>
+            <div class="row">
+              <h6 class="ml-4 mt-2">asignatura</h6>
+                <select [(ngModel)]="taskSelectedAsignatura" style="width : 295px" class="form-control ml-4" (change)="onSelectAsignatura($event.target.value)" >
+                  <option  *ngFor="let taskA of tasksAsignaturaselection" [value]="taskA.asignaturaName"  >
+                    {{taskA.asignaturaName}}         
+                  </option>                
+                </select> 
+            </div>
+            <div class="row">
+              <h6 class="ml-4 mt-2">tipo de archivo</h6>
+                <select class="form-control ml-4" style="width : 295px" [(ngModel)]="taskSelectedTipo2">
+                  <option>Documento</option>
+                  <option>Presentación</option>
+                </select> 
+            </div>     
+          </div>
+          <div class="card-footer bg-dark" style="opacity: 0.8;">                
+            <button type="button" class="btn btn-success btn-block btn-sm ml-2 mt-2" routerLink="/getesp/{{taskSelectedUniversity}}/{{taskSelectedCarrer}}/{{taskSelectedAsignatura}}/{{taskSelectedTipo2}}">BUSCAR</button>
+          </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+</div>

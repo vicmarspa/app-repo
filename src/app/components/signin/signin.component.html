@@ -1,0 +1,37 @@
+<div class="row mt-5">
+    <div class="col-6">
+        <h1 class="d-flex justify-content-center">Repositorio Estudiantil.</h1>
+        <h4 align="justify">
+            En este repositorio estudiantil podrás subir, buscar, calificar o comentar
+            material estudiantil. En el repositorio puedes encontrar el material que tus compañeros
+            en años previos han ingresado al sistema teniendo, la posibilidad de realizar busquedas a traves 
+            de tu intutución academica, carrera y asignatura.
+        </h4>
+        <button class="btn btn-success btn-block" routerLink="/signup" routerLinkActive="active">
+            <b>Registrar</b>
+        </button>
+    </div>
+    <div class="col-6">
+        <div class="mx-auto">
+            <div class="card">
+                <div class="card-header">
+                   <b class="d-flex justify-content-center">Iniciar Sesión</b> 
+                </div>
+                <div class="card-body">
+                    <form (submit)="signIn()">
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="user.userEmail" name="email" class="form-control" placeholder="Correo Electrónico" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" [(ngModel)]="user.userPass" name="password" class="form-control" placeholder="Contraseña" required>
+                        </div>
+                        <button class="btn btn-primary btn-block " routerLink="/signin">
+                            SignIn
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

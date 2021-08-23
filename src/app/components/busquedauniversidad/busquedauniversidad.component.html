@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-4 p-4" *ngFor="let task of tasks">
+        <br>
+        <div class="card border border-secondary text-uppercase">
+            <div class="cardhead bg-primary text-white p-2">
+                <h5>  {{task.documentTitle}}</h5>
+                
+
+
+            </div>
+            <div class="card-body bg-light">
+             
+            <b>DESCRIPCIÓN: &nbsp;</b><FONT SIZE="2" align="justify">{{task.documentDescription}}</FONT>
+            </div>
+            <div class="card-footer bg-light">
+                <FONT SIZE="1"><b>FECHA DE PUBLICACIÓN:</b>  {{task.documentDate | date: 'shortDate'}}</FONT>
+                &nbsp;
+                <FONT SIZE="1"><b>AUTOR:</b>  {{task.documentAuthor}}</FONT>
+                <br>
+                <FONT SIZE="1"><b>DISCIPLINA:</b>  {{task.documentSubArea}}</FONT>
+                <br>
+                <FONT SIZE="1"><b>ÁREA DEL CONOCIMIENTO:</b>  {{task.documentArea}}</FONT>
+                <br>
+                <FONT SIZE="1"><b>TIPO:</b>  {{task.documentType}}</FONT>
+                <br>
+                <br>
+
+                <div class="d-flex flex-row-reverse">
+                  <button class="btn btn-primary btn-block " routerLink="/documento/{{task._id}}">
+                    IR AL DOCUMENTO
+                  </button>
+                </div>
+       
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+

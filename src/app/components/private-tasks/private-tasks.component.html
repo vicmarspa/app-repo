@@ -1,0 +1,104 @@
+<div class="container-fluid col-12">
+
+<div class="row">
+<div class="col-4">
+    <div class="col-12" *ngFor="let task of privateTasks">
+        <br>
+
+        <div class="card">
+            
+            <div class="cardhead bg-dark rounded-top text-white p-2  d-flex justify-content-center">
+                <b><h4>Datos Personales</h4></b>
+            </div>
+
+            <div class="card-body bg-light">
+                <span class=""><h5>Nombre:</h5> <b>{{task.name}}</b> </span>
+                <div class="mt-4"><h5>Correo Electrónico:</h5><b>{{task.description}}</b></div>
+                <div class="mt-4"><h5>Tipo de Usuario:</h5> <b>{{task.date}}</b></div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <div class="cardhead bg-dark rounded-top text-white p-2  d-flex justify-content-center">
+                <b><h4>Opciones de Usuario</h4></b>
+            </div>
+            <div class="card-body bg-light">
+                <li><a href="#">Subir Documento.</a></li>
+                <li><a href="#">Subir Presentación.</a></li>
+                <li><a href="/editprofile">Editar Perfil.</a></li>
+                <li><a href="/adduniversity">AGREGAR INSTITUCIÓN.</a></li>
+                <li><a href="/addcarrer">AGREGAR CARRERA.</a></li>
+                <li><a href="/addasignatura">AGREGAR ASIGNATURA.</a></li>
+                <li><a href="/addcalification">CALIFICAR DOCUMENTO.</a></li>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="col">
+    <div class="col-12" *ngFor="let task of tasks">
+        <br>
+        <div class="card border border-secondary text-uppercase ">
+            <div class="cardhead text-white p-2" style="opacity: 0.8;" [ngClass]="{'bg-primary' : task.documentType == 'Documento',  'bg-danger' : task.documentType == 'Presentación'}">
+                <h3>  {{task.documentTitle}}</h3>
+            </div>
+            <div class="card-body bg-light">
+                <p><b>DESCRIPCIÓN: &nbsp; </b>{{task.documentDescription}}</p>
+            </div>
+            <div class="card-footer">
+                <FONT SIZE="2" ><b>FECHA DE PUBLICACIÓN:</b>  {{task.documentDate | date: 'shortDate'}}</FONT>
+                &nbsp;
+                <FONT SIZE="2"><b>AUTOR:</b>  {{task.documentAuthor}}</FONT>
+                <br>
+                <FONT SIZE="2"><b>DISCIPLINA:</b>  {{task.documentSubArea}}</FONT>
+                <br>
+                <FONT SIZE="2"><b>ÁREA DEL CONOCIMIENTO:</b>  {{task.documentArea}}</FONT>
+                <br>
+                <FONT SIZE="2"><b>TIPO:</b>  {{task.documentType}}</FONT>
+                <br>
+                <br>
+                <div class="d-flex flex-row-reverse">
+                    <button class="btn btn-danger" (click)="deleteDocument(task._id)">
+                        ELIMINAR
+                    </button>
+                    &nbsp;
+
+                    <button type="button" class="btn btn-success ">MODIFICAR</button>
+                    &nbsp;
+
+              
+                    <button class="btn btn-primary" routerLink="/documento/{{task._id}}">
+                        IR AL DOCUMENTO
+                    </button>
+
+                </div>
+       
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>

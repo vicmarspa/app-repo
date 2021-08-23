@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ng-container *ngIf="authService.loggedIn()">
+
+
+
+      <form class="form-inline  ">
+        <a class="navbar-brand mt-2" href="/private"><i class="material-icons md-48"   style="font-size: 50px">account_circle</i></a>
+          <input class="form-control rounded-pill justify-content-center border border-secondary" style="width: 420px; margin-left: 520px;" [(ngModel)]="taskBusquedaFinal" name="taskBusquedaFinal"placeholder="Buscar Documento">
+          <button type="button" class="btn btn-dark d-flex justify-content-center"   routerLink="/getsearchfinal/{{taskBusquedaFinal}}"><i class="material-icons">search</i></button>
+      </form>  
+      
+
+      
+      </ng-container>
+
+    <ul class="navbar-nav ml-auto">
+     
+        <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signin" routerLinkActive="active">Ingresar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup" routerLinkActive="active">Registrar</a>
+          </li>
+
+        </ng-container>
+
+
+        <ng-template #loggedIn>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/private" routerLinkActive="active">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tasks" routerLinkActive="active">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/documentos">Subir Documento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer" (click)="authService.logout()">Salir</a>      
+          </li>
+
+
+
+
+        </ng-template>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+
+</div>

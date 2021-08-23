@@ -1,0 +1,138 @@
+<div class="container-fluid col-12">
+    <div class="row">
+        <div class="col-8">
+            <div class="col-12">
+            <br>
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                    <FONT SIZE="2"><b class=" d-flex justify-content-start ml-4">ID: &nbsp; {{documento._id}}</b></FONT>
+                    <FONT SIZE="5"><b class=" d-flex justify-content-center text-uppercase p-4">{{documento.documentTitle}}</b></FONT>
+                    <FONT SIZE="4"><b class=" d-flex justify-content-start text-uppercase p-4">AUTOR: &nbsp; {{documento.documentAuthor}}</b></FONT>
+                    </div>
+                    <div class="card-body bg-light" >
+                    <h5 class=" d-flex justify-content-center p-4" align="justify" style="font-weight: normal">{{documento.documentRes}}</h5>
+                    </div>
+                </div>
+            <br>
+                <div class="card-body">
+                    <form (submit)="postCommentdocument()">
+                        <div class="form-group">
+                            <textarea rows="4" [(ngModel)]="documentoComment.documentComment" name="documentComment" class="form-control" placeholder="COMENTARIO" maxlength="250" required autofocus></textarea>
+                        </div>
+                        <button class="btn btn-success btn-block">
+                        <b>COMENTAR</b>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+
+
+        <div class="col-4 bg-dark">
+          
+
+
+           
+
+            <ngb-rating class="ml-4" [(rate)]="starRating" [max]="5" >
+                <ng-template let-fill="fill" let-index="index">
+                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                </ng-template>
+
+        
+              </ngb-rating>
+           
+             
+            
+              <div class="text-white"><FONT SIZE="4">Entrega Una Calificación:      </FONT><b style="margin-left: 58px;"><FONT SIZE="5">{{starRating}}</FONT></b></div>
+
+              <div class="text-white"><FONT SIZE="4">Calificación:               </FONT><b style="margin-left: 160px;"><FONT SIZE="5">{{sumarate()/cantRate() | number:'1.1-2'}}</FONT></b></div>
+
+              <div class="text-white"><FONT SIZE="4">Cantidad de Calificaciones: </FONT><b style="margin-left: 40px;"><FONT SIZE="5">{{cantRate()}}</FONT></b></div>
+
+              <form (submit)="postRatedocument()">
+                <button class="btn btn-success btn-block">
+                <b>CALIFICAR</b>
+                </button>
+            </form>
+
+            
+              <br class="text-white">
+              <FONT SIZE="4"><b class="text-white d-flex justify-content-center">EVALUACIÓN PROFESIONAL</b></FONT>
+
+              
+                
+              <div class="text-white"><FONT SIZE="4">Estructura: </FONT><b style="margin-left: 172px;"><FONT SIZE="5">{{sumCalificationStructure()/cantCalificationStructure()}}</FONT></b></div>
+              <div class="text-white"><FONT SIZE="4">Coherencia: </FONT><b style="margin-left: 162px;"><FONT SIZE="5">{{sumacalificationCoherence()/cantcalificationCoherence()}}</FONT></b></div>
+              <div class="text-white"><FONT SIZE="4">Autoría: </FONT><b style="margin-left: 193px;"><FONT SIZE="5">{{sumacalificationAutorship()/cantcalificationAutorship()}}</FONT></b></div>
+              <div class="text-white"><FONT SIZE="4">Fuentes: </FONT><b style="margin-left: 190px;"><FONT SIZE="5">{{sumacalificationFont()/cantcalificationFont()}}</FONT></b></div>
+              <div class="text-white"><FONT SIZE="4">Utilidad: </FONT><b style="margin-left: 190px;"><FONT SIZE="5">{{sumacalificationUtility()/cantcalificationUtility()}}</FONT></b></div>
+
+
+
+
+
+
+
+              <div class="text-white"><FONT SIZE="4">NOTA DEL DOCUMENTO 10/70 : </FONT><b><FONT SIZE="5">{{       (((sumCalificationStructure()/cantCalificationStructure())+(sumacalificationCoherence()/cantcalificationCoherence())+(sumacalificationAutorship()/cantcalificationAutorship())+(sumacalificationFont()/cantcalificationFont())+(sumacalificationUtility()/cantcalificationUtility()))*70 )/15    | number:'1.1-2'      }}</FONT></b></div>
+
+
+            <br>
+
+            
+
+
+            <form (submit)="descargar(documento.documentUrl)">
+                <button class="btn btn-primary btn-block">
+                    <b>DESCARGAR ARCHIVO</b>
+                </button>
+            </form>
+            <br>
+            
+
+            
+
+
+
+        
+            
+
+
+
+            <div class="col-12" *ngFor="let task of allcomment">
+                <br>
+                <div class="card border border-secondary text-uppercase ">
+                    <div class="cardhead bg-dark text-white p-2" style="opacity: 0.8;">
+                       <FONT SIZE="2"> FECHA: {{task.documentDate | date:'medium'}}</FONT>
+
+        
+                    </div>
+                    <div class="card-body bg-light">
+        
+                        <p>{{task.documentComment}}</p>
+                    </div>
+
+    
+               
+                    
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    
+    </div> 
+</div> 
+
+    
+    
+    
+    

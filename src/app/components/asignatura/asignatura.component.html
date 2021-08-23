@@ -1,0 +1,33 @@
+<div class="card-body">
+    <form (submit)="postAsignatura()">
+        <div class="form-group">
+            <textarea rows="1" [(ngModel)]="asignatura.asignaturaName" name="asignaturaName" class="form-control" placeholder="NOMBRE DE LA ASIGNATURA" maxlength="250" required autofocus></textarea>
+        </div>
+        <div class="form-group">
+            <textarea rows="4" [(ngModel)]="asignatura.asignaturaSpecification" name="asignaturaSpecification" class="form-control" placeholder="DESCRIPCIÓN DE LA ASIGNATURA" maxlength="250" required autofocus></textarea>
+        </div>
+        <b>¿A Que Universidad Pertenece La Carrera?</b>
+        <br>
+        <select class="form-group" [(ngModel)]="taskSelectedUniversity" name="asignaturauniversityname" class="form-control" (change)="onSelectUniversity($event.target.value)"  >
+            <option  *ngFor="let taskU of taskUniversity" [value]="taskU.universityName" >
+               {{taskU.universityName}}         
+            </option>                
+        </select>   
+        <br>
+
+        <b>¿A cual carrera de esta universidad?</b>
+        <select [(ngModel)]="taskSelectedCarrer" class="form-control" (change)="onSelectCarrer($event.target.value)" >
+            <option  *ngFor="let taskC of tasksCarrerselection" [value]="taskC.carrerName"  >
+               {{taskC.carrerName}}         
+            </option>                
+        </select>  
+        <br>
+
+
+
+
+        <button class="btn btn-success btn-block">
+        <b>AGREGAR INSTICUCIÓN</b>
+        </button>
+    </form>
+

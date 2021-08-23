@@ -1,0 +1,21 @@
+<div class="card-body">
+    <form (submit)="postCarrer()">
+        <div class="form-group">
+            <textarea rows="1" [(ngModel)]="carrer.carrerName" name="carrerName" class="form-control" placeholder="nombre de la carrera" maxlength="250" required autofocus></textarea>
+        </div>
+        <div class="form-group">
+            <textarea rows="4" [(ngModel)]="carrer.carrerSpecification" name="carrerSpecification" class="form-control" placeholder="especificación acerca de la carrera" maxlength="250" required autofocus></textarea>
+        </div>
+        <b>¿A Que Universidad Pertenece La Carrera?</b>
+        <br>
+        <select class="form-group" [(ngModel)]="taskSelectedUniversity" name="carreruniversityname" class="form-control" (change)="onSelectUniversity($event.target.value)"  >
+            <option  *ngFor="let taskU of taskUniversity" [value]="taskU.universityName" >
+               {{taskU.universityName}}         
+            </option>                
+        </select>   
+        <br>
+        <button class="btn btn-success btn-block">
+        <b>AGREGAR INSTICUCIÓN</b>
+        </button>
+    </form>
+

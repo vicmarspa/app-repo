@@ -1,0 +1,16 @@
+<div class="card-body">
+    <form (submit)="postUniversity()">
+        <div class="form-group">
+            <textarea rows="1" [(ngModel)]="university.universityName" name="universityName" class="form-control" placeholder="NOMBRE DE LA INSTITUCIÓN" maxlength="250" required autofocus></textarea>
+        </div>
+        <div class="form-group">
+            <textarea rows="1" [(ngModel)]="university.universityConuntry" name="universityConuntry" class="form-control" placeholder="UBICACIÓN DETALLADA" maxlength="250" required autofocus></textarea>
+        </div>
+        <div class="form-group">
+            <textarea rows="4" [(ngModel)]="university.universitySpecification" name="universitySpecification" class="form-control" placeholder="ESPECIFICA ACERCA DE LA INSTITUCIÓN" maxlength="250" required autofocus></textarea>
+        </div>
+        <button class="btn btn-success btn-block">
+        <b>AGREGAR INSTICUCIÓN</b>
+        </button>
+    </form>
+</div>

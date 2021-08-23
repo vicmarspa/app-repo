@@ -1,0 +1,39 @@
+<div class="row mt-5">
+    <div class="col-3">
+
+
+    </div>
+    <div class="col-6">
+        <div class="mx-auto">
+            <div class="card">
+                <div class="card-header d-flex justify-content-center">
+                    <b>EDITAR USUARIO</b>
+                </div>
+                <div class="card-body">
+                    <form (submit)="editProfile()">
+                        <h3>Correo Electrónico</h3>
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="user.userEmail" name="userEmail" class="form-control" placeholder="Correo Electrónico" required autofocus>
+                        </div>
+                        <h3>Contraseña</h3>
+                        <div class="form-group">
+                            <input type="password" [(ngModel)]="user.userPass" name="userPass" class="form-control" placeholder="Contraseña" required autofocus>
+                        </div>
+                        <h3>Nombre</h3>
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="user.userName" name="userName" class="form-control" placeholder="Nombre" required autofocus>
+                        </div>
+                        <button class="btn btn-primary btn-block">
+                        <b>FINALIZAR EDICIÓN</b>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+
+        
+    </div>
+</div>
